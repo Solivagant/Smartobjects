@@ -1,1 +1,1 @@
-http://192.168.10.5:7778/acc
+http://unknownf81edfee1c62.local.lan:7778/acc

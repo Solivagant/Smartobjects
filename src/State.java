@@ -1,5 +1,7 @@
 /*
  * Defines a Smartobject state
+ * parallel behaviours para controlar posiçao (agente controlador)
+ * 
  */
 public class State {
 	private String name;

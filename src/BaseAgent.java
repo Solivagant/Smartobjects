@@ -14,28 +14,12 @@ import jade.lang.acl.ACLMessage;
 
 public abstract class BaseAgent extends Agent {
 	
-	private void print(String log){
-		System.out.println(getName() + ": " + log);
-		
+	protected void log(String log){
+		System.out.println(getLocalName() + ": " + log);
 	}
 	
 	//Identifies the controller that will broker communication
-	private AID controller = null;
-	
-	
-	private class WaitForContact extends CyclicBehaviour {
-		public void action() {
-			ACLMessage msg = receive();
-			if (msg != null && msg.getPerformative() == ACLMessage.REQUEST) {
-				print("Message received at SmartObject, replying");
-				ACLMessage reply = msg.createReply();
-				reply.setPerformative(ACLMessage.INFORM);
-				reply.setContent("default reply");
-				send(reply);
-			}
-		}
-	}
-	
+	protected AID controller = null;
 	
 	protected void setup() {
 //		this.state = 1;
@@ -50,7 +34,6 @@ public abstract class BaseAgent extends Agent {
 
 		try {
 			Thread.sleep(1000);
-			System.out.println("BaseAgent is operational.");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -67,12 +50,6 @@ public abstract class BaseAgent extends Agent {
 		} catch (FIPAException fe) {
 			fe.printStackTrace();
 		}
-		System.out.println(controller);
 
-		ACLMessage type = new ACLMessage(ACLMessage.PROPOSE);
-		type.addReceiver(controller);
-		send(type);
-
-		this.addBehaviour(new WaitForContact());
 	}
 }
