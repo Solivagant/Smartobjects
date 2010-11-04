@@ -12,6 +12,7 @@ import java.util.List;
  * 	Lista de estados poss’veis
  * 	Estado corrente
  * ƒ um agente para poder comunicar com os agentes que pretendam utilizar o SO.
+ * 
  * criar a partir de ficheiros vrml (agentes definidos em ficheiros vrml para depois serem lidos pelo webots)
  * VRML parser
  * Tornar os Estados comuns a v‡rios tipos de smartobjects,e o useja, o estado Fechado de uma porta Ž o mesmo 

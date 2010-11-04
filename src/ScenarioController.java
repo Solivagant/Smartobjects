@@ -8,6 +8,8 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.UnreadableException;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 @SuppressWarnings("serial")
@@ -18,6 +20,12 @@ public class ScenarioController extends BaseAgent {
 	@Override
 	protected void setup() {
 
+		try {
+			VRMLoader.load(new File("MTPs-Main-Container.txt"));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 		// Service Description Starter
 		DFAgentDescription dfd = new DFAgentDescription();
 		dfd.setName(getAID());
